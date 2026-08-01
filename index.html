@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desconto Exclusivo Estratégia | Cupom RAIZA10</title>
+  <style>
+    /* RESET E VARIÁVEIS GLORAIS */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --bg-color: #0b0d12;
+      --accent-color: #00e676;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --text-color: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.4s ease;
+      
+    }
+
+    /* HERO SECTION INTIMIDADORA (OLHO DA CORUJA) */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background-image: url('Coruja.jpg');
+      background-size: cover;
+      /* Fundo simulando os olhos da coruja no escuro com efeito Radial Gradient */
+           
+      }
+      
+        
+
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11, 13, 18, 0.75);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0, 230, 118, 0.6);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #d1d5db;
+      margin-bottom: 30px;
+      
+    }
+
+    /* CAIXA DO CUPOM EM DESTAQUE */
+    .coupon-box {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px dashed var(--accent-color);
+      padding: 15px 30px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 0 25px rgba(0, 230, 118, 0.3);
+    }
+
+    .coupon-code {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: var(--accent-color);
+    }
+
+    .btn-copy {
+      background: var(--accent-color);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-copy:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* NAVEGAÇÃO POR ABAS */
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #141824;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: var(--accent-color);
+      color: #000;
+      border-color: var(--accent-color);
+    }
+
+    /* SEÇÃO DE CONTEÚDO DAS ABAS */
+    .main-content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 15px;
+    }
+
+    /* CARDS DOS CONCURSOS */
+    .grid-courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #a0aec0;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-buy {
+      display: block;
+      text-align: center;
+      background: var(--accent-color);
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+
+    .btn-buy:hover {
+      filter: brightness(1.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CORES PERSONALIZADAS POR ABA */
+    body.theme-med { --accent-color: #00c6ff; }
+    body.theme-oab { --accent-color: #ff4b1f; }
+    body.theme-juridica { --accent-color: #d4af37; }
+    body.theme-militares { --accent-color: #47a75f; }
+    body.theme-vestibulares { --accent-color: #ffa500; }
+  </style>
+</head>
+<body class="theme-med">
+
+  <!-- HERO SECTION INTIMIDADORA -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>O SEU NOME NA LISTA DE APROVADOS</h1>
+      <p>"Enquanto eles dormem, a coruja vigia. A sua preparação decide o seu futuro."</p>
+      
+      <!-- CUPOM EM DESTAQUE -->
+      <div class="coupon-box">
+        <div>
+          <span style="display:block; font-size: 0.8rem; text-transform: uppercase; color: #aaa;">Cupom Oficial</span>
+          <span class="coupon-code" id="couponCode">RAIZA10</span>
+        </div>
+        <button class="btn-copy" onclick="copyCoupon()">COPIAR CUPOM</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVEGAÇÃO DE ABAS -->
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('med', 'theme-med', this)">Cupom Estratégia MED</button>
+    <button class="tab-btn" onclick="switchTab('oab', 'theme-oab', this)">Cupom Estratégia OAB</button>
+    <button class="tab-btn" onclick="switchTab('juridica', 'theme-juridica', this)">Cupom Estratégia Carreiras Jurídicas</button>
+    <button class="tab-btn" onclick="switchTab('militares', 'theme-militares', this)">Cupom Estratégia Militares</button>
+    <button class="tab-btn" onclick="switchTab('vestibulares', 'theme-vestibulares', this)">Cupom Estratégia Vestibulares</button>
+  </nav>
+
+  <!-- CONTEÚDO PRINCIPAL (MUDANÇA DINÂMICA DE ABAS) -->
+  <main class="main-content">
+
+    <!-- ABA ESTRATÉGIA MED -->
+    <div id="med" class="tab-pane active">
+      <h2 class="section-title">Estratégia MED</h2>
+      <p>Principais pacotes e concursos médicos com desconto aplicado via <strong>RAIZA10</strong>:</p>
+      
+      <div class="grid-courses">
+        <div class="card">
+          <h3>Extensivo Residência Médica</h3>
+          <p>Preparatório completo para as provas de residência médica.</p>
+          <a href="https://med.estrategia.com/concurso/extensivo-residencia-medica/" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Revalida Exclusive</h3>
+          <p>Foco total no Revalida INEP.</p>
+          <a href="https://med.estrategia.com/concurso/revalida-exclusive" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Banco de questões</h3>
+          <p>O maior banco de questões para as provas de Residência Médica e Revalida.</p>
+          <a href="https://med.estrategia.com/concurso/banco-de-questoes" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA OAB -->
+    <div id="oab" class="tab-pane">
+      <h2 class="section-title">Estratégia OAB</h2>
+      <p>Garanta sua carteira vermelha com o cupom <strong>RAIZA10</strong> em todos os cursos:</p>
+      
+      <div class="grid-courses">
+        <div class="card">
+          <h3>Pacote 1ª Fase OAB</h3>
+          <p>Teoria completa + Questões comentadas + Simulados inéditos.</p>
+          <a href="https://oab.estrategia.com/" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Pacote 2ª Fase OAB</h3>
+          <p>Teoria completa + Questões comentadas + Simulados inéditos.</p>
+          <a href="https://oab.estrategia.com/lp/segundafase/index.html" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA CARREIRAS JURÍDICAS -->
+    <div id="juridica" class="tab-pane">
+      <h2 class="section-title">Carreiras Jurídicas</h2>
+      <p>Os concursos de ponta do direito com o cupom <strong>RAIZA10</strong>:</p>
+      
+      <div class="grid-courses">
+        <div class="card">
+          <h3>Delegado</h3>
+          <p>Conteúdos atualizados, exercícios práticos e simulados focados para Delta</p>
+          <a href="https://cj.estrategia.com/concurso/cursos-para-delegados" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Procuradoria</h3>
+          <p>Nossos cursos para Procurador preparam o aluno para enfrentar as provas com confiança e precisão.</p>
+          <a href="https://cj.estrategia.com/concurso/cursos-para-procuradorias-e-advogados" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>ENAM</h3>
+          <p>Garanta uma preparação completa, com Livro Digital Interativo, Videoaulas, Resumos, Simulados, Trilhas e muito mais.</p>
+          <a href="https://cj.estrategia.com/concurso/enam" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Cursos Regulares</h3>
+          <p>Preparação para alunos do ZERO ao AVANÇADO, com cursos completos, livro digital, aulas em vídeo, resumos e muito mais.</p>
+          <a href="https://cj.estrategia.com/concurso/cursos-regulares" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA MILITARES -->
+    <div id="militares" class="tab-pane">
+      <h2 class="section-title">Estratégia Militares</h2>
+      <p>Farde-se com desconto usando o cupom <strong>RAIZA10</strong>:</p>
+      
+      <div class="grid-courses">
+        <div class="card">
+          <h3>Exército </h3>
+          <p>Escola Preparatória de Cadetes do Exército (EsPCEx) - Escola de Sargentos das Armas (ESA) - Colégio Militar<br>IME</p>
+          <a href="https://militares.estrategia.com/concursos/cursos/exercito" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Marinha</h3>
+          <p>Colégio naval - EFOMM - Escola Naval - Corpo de Fuzileiros Navais</p>
+          <a href="https://militares.estrategia.com/concursos/cursos/marinha" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Força Aérea</h3>
+          <p>Escola Preparatória de Cadetes do Ar (EPCAR)<br>Escola de Especialistas de Aeronáutica (EEAR)<br>Academia da Força Aérea (AFA)<br> Instituto Tecnológico de Aeronáutica (ITA)</p>
+          <a href="https://militares.estrategia.com/concursos/cursos/forca-aerea" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA VESTIBULARES -->
+    <div id="vestibulares" class="tab-pane">
+      <h2 class="section-title">Estratégia Vestibulares</h2>
+      <p>Sua vaga nas melhores universidades do país com o cupom <strong>RAIZA10</strong>:</p>
+      
+      <div class="grid-courses">
+        <div class="card">
+          <h3>Pacote ENEM TOP</h3>
+          <p>O ENEM Top foi elaborado para atender às necessidades dos estudantes que buscam foco e profundidade nos estudos para o ENEM.</p>
+          <a href="https://vestibulares.estrategia.com/instituicao/enem-top" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+        <div class="card">
+          <h3>Enem MED EXCLUSIVE</h3>
+          <p>O ENEM Med Exclusive foi elaborado pensando especificamente nas necessidades de quem busca a aprovação em cursos de Medicina. </p>
+          <a href="https://vestibulares.estrategia.com/instituicao/enem-med-exclusive" target="_blank" class="btn-buy">Ir para o site oficial</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT NATIVO -->
+  <script>
+    // Função para Copiar o Cupom
+    function copyCoupon() {
+      const couponText = document.getElementById("couponCode").innerText;
+      navigator.clipboard.writeText(couponText).then(() => {
+        alert("Cupom RAIZA10 copiado com sucesso!");
+      });
+    }
+
+    // Função para trocar de abas e trocar a paleta de cores da página
+    function switchTab(tabId, themeClass, element) {
+      // 1. Ocultar todos os conteúdos
+      document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
+      });
+
+      // 2. Remover classe active dos botões
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // 3. Exibir a aba selecionada
+      document.getElementById(tabId).classList.add('active');
+      element.classList.add('active');
+
+      // 4. Alterar o tema de cor do body
+      document.body.className = themeClass;
+    }
+  </script>
+</body>
+</html>
